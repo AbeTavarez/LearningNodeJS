@@ -1,0 +1,20 @@
+{
+  "name": "learningnodejs",
+  "version": "1.0.0",
+  "description": "Learn NodeJS course.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AbeTavarez/LearningNodeJS.git"
+  },
+  "author": "Abraham E. Tavarez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AbeTavarez/LearningNodeJS/issues"
+  },
+  "homepage": "https://github.com/AbeTavarez/LearningNodeJS#readme"
+}

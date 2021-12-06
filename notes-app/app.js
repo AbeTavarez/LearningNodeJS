@@ -1,8 +1,11 @@
+import {name, add} from './utils.js'
+import getNotes from './notes.js';
 
 
-// loading in the file system module
-const fs = require('fs');
 
-// fs.writeFileSync('my_notes.txt', "My first note!");
 
-fs.appendFileSync('my_notes.txt', " My new text data!!!!")
+const sum = add(3,6)
+console.log(name)
+console.log(sum)
+
+getNotes()
