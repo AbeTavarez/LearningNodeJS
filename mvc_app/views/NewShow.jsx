@@ -6,7 +6,7 @@ class NewShow extends React.Component {
             <div>
                 <h1>Create New Show</h1>
 
-                <form>
+                <form action="/tvshows" method="POST">
                     Name: <input type="text" name="name"/>
                     <br/>
                     Year: <input type="text" name="year"/>
