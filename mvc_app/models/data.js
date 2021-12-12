@@ -1,4 +1,4 @@
-export const tvshows = [
+const tvshows = [
     {
         title: "silicon valley",
         year: 2010,
@@ -15,4 +15,6 @@ export const tvshows = [
         isFavorite: false,
       },
 ];
+
+module.exports = tvshows;
 
