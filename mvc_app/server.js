@@ -1,5 +1,6 @@
+const { json } = require('express');
 const express = require('express');
-const tvshows = require('./models/data');
+const tvshowsArray = require('./models/data');
 
 const app = express();
 
@@ -8,13 +9,15 @@ app.set('view engine', 'jsx');
 app.engine('jsx', require('express-react-views').createEngine());
 
 //* ===== Middlewares
-app.use(express.urlencoded({extended:false}));
 
 app.use((req, res, next)=> {
     console.log(`Running middleware...`);
     next()
 })
 
+app.use(express.urlencoded({extended:false}));
+
+// app.use(express.json());
 //* ===== Routes
 
 // * @ New Show Form Route
@@ -24,13 +27,13 @@ app.get('/tvshows/new', (req, res) => {
 
 app.get('/tvshows/:indexOfShowArray', (req, res) => {
     res.render('Show', {
-        tvshow: tvshows[req.params.indexOfShowArray],
+        tvshow: tvshowsArray[req.params.indexOfShowArray],
         
     });
 });
 
 app.get('/tvshows', (req, res) => {
-    res.render('Index', {tvshows: tvshows})
+    res.render('Index', {tvshows: tvshowsArray})
 });
 
 app.get('/', (req, res) => {
@@ -38,7 +41,17 @@ app.get('/', (req, res) => {
 });
 
 app.post('/tvshows', (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
+
+    if (req.body.isFavorite === 'on') {// checks if radio button is on
+        req.body.isFavorite = true;
+    } else {
+        req.body.isFavorite = false;
+    };
+
+    // tvshowsArray.push(JSON.parse(JSON.stringify(req.body)));
+    tvshowsArray.push(req.body)
+    console.log(tvshowsArray);
     res.send(`data received`)
 })
 
