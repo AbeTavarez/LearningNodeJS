@@ -1,5 +1,5 @@
 const express = require('express');
-const tvshow = require('./models/data');
+const tvshows = require('./models/data');
 
 const app = express();
 
@@ -7,16 +7,40 @@ const app = express();
 app.set('view engine', 'jsx');
 app.engine('jsx', require('express-react-views').createEngine());
 
+//* ===== Middlewares
+app.use(express.urlencoded({extended:false}));
+
+app.use((req, res, next)=> {
+    console.log(`Running middleware...`);
+    next()
+})
+
 //* ===== Routes
-app.get('/', (req, res) => {
-    res.render('Show')
+
+// * @ New Show Form Route
+app.get('/tvshows/new', (req, res) => {
+    res.render('NewShow')
 });
 
-app.get('/shows/:indexOfShowArray', (req, res) => {
+app.get('/tvshows/:indexOfShowArray', (req, res) => {
     res.render('Show', {
-        tvshow: tvshow[req.params.indexOfShowArray]
+        tvshow: tvshows[req.params.indexOfShowArray],
+        
     });
 });
+
+app.get('/tvshows', (req, res) => {
+    res.render('Index', {tvshows: tvshows})
+});
+
+app.get('/', (req, res) => {
+    res.render('Show', {url: req.url})
+});
+
+app.post('/tvshows', (req, res) => {
+    console.log(req.body);
+    res.send(`data received`)
+})
 
 const PORT = 3001;
 
