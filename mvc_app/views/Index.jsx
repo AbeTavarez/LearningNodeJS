@@ -6,13 +6,13 @@ class Index extends React.Component {
 
     return (
       <div>
-        <h1>TV Show Page</h1>
+        <h1>All TV Shows Page</h1>
 
         <ul>
           {tvshows.map((tvshow, idx) => {
             return (
               <li key={tvshow.title}>
-                The <a href={`/tvshows/${idx}`}>{tvshow.title}</a>
+                The <a href={`/tvshows/${idx}`}>{tvshow.title}</a>{" "}
                 came out on {tvshow.year} <br/>
                 {tvshow.isFavorite ? `${tvshow.title} is one of my favorite tv shows.`: null}
               </li>

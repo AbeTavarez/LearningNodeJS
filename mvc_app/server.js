@@ -1,4 +1,4 @@
-const { json } = require('express');
+
 const express = require('express');
 const tvshowsArray = require('./models/data');
 
@@ -18,7 +18,7 @@ app.use((req, res, next)=> {
 app.use(express.urlencoded({extended:false}));
 
 // app.use(express.json());
-//* ===== Routes
+//* ============================= Routes
 
 // * @ New Show Form Route
 app.get('/tvshows/new', (req, res) => {
@@ -49,10 +49,12 @@ app.post('/tvshows', (req, res) => {
         req.body.isFavorite = false;
     };
 
-    // tvshowsArray.push(JSON.parse(JSON.stringify(req.body)));
     tvshowsArray.push(req.body)
+    // tvshowsArray.push(JSON.parse(JSON.stringify(req.body)));
     console.log(tvshowsArray);
-    res.send(`data received`)
+    // res.send(`data received`);
+
+    res.redirect('/tvshows')
 })
 
 const PORT = 3001;
